@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Zap, Shield, Database, Layout, Terminal, Settings } from "lucide-react";
 import FeatureCard from "./FeatureCard";
 
@@ -13,15 +14,21 @@ const features = [
 const FeaturesSection = () => (
   <section id="features" className="relative py-24 px-4">
     <div className="max-w-5xl mx-auto">
-      <div className="text-center mb-16">
+      <motion.div
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="text-xs font-mono text-primary tracking-widest uppercase mb-3">Features</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
           Everything you need to start building
         </h2>
-      </div>
+      </motion.div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {features.map((f) => (
-          <FeatureCard key={f.title} {...f} />
+        {features.map((f, i) => (
+          <FeatureCard key={f.title} index={i} {...f} />
         ))}
       </div>
     </div>

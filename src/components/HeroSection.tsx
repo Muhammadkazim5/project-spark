@@ -1,13 +1,17 @@
+import { motion } from "framer-motion";
 import TerminalDemo from "./TerminalDemo";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-16 overflow-hidden">
-    {/* Grid background */}
     <div className="absolute inset-0 bg-grid opacity-30" />
-    {/* Radial glow */}
     <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px]" />
 
-    <div className="relative z-10 text-center max-w-3xl mx-auto mb-12">
+    <motion.div
+      className="relative z-10 text-center max-w-3xl mx-auto mb-12"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+    >
       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-glow bg-primary/5 text-primary text-xs font-mono mb-6">
         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-glow-pulse" />
         v1.0 — Now Available
@@ -37,9 +41,15 @@ const HeroSection = () => (
           See features ↓
         </a>
       </div>
-    </div>
+    </motion.div>
 
-    <TerminalDemo />
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+    >
+      <TerminalDemo />
+    </motion.div>
   </section>
 );
 

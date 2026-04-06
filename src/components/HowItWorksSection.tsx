@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const steps = [
   { num: "01", title: "Run the CLI", desc: "Execute npx create-myapp in your terminal." },
   { num: "02", title: "Choose your stack", desc: "Select framework, database, and features interactively." },
@@ -8,19 +10,32 @@ const steps = [
 const HowItWorksSection = () => (
   <section className="py-24 px-4">
     <div className="max-w-4xl mx-auto">
-      <div className="text-center mb-16">
+      <motion.div
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="text-xs font-mono text-primary tracking-widest uppercase mb-3">How It Works</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Four steps to launch</h2>
-      </div>
+      </motion.div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {steps.map((s) => (
-          <div key={s.num} className="flex gap-4 p-5 rounded-lg bg-card border border-border">
+        {steps.map((s, i) => (
+          <motion.div
+            key={s.num}
+            className="flex gap-4 p-5 rounded-lg bg-card border border-border"
+            initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+          >
             <span className="text-2xl font-bold gradient-text font-mono">{s.num}</span>
             <div>
               <h3 className="font-semibold text-foreground mb-1">{s.title}</h3>
               <p className="text-sm text-muted-foreground">{s.desc}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const stacks = [
   { category: "CLI Tool", items: ["Node.js", "TypeScript", "Commander", "Inquirer"] },
   { category: "Backend", items: ["NestJS", "Prisma ORM", "PostgreSQL", "JWT Auth"] },
@@ -7,13 +9,26 @@ const stacks = [
 const TechStackSection = () => (
   <section className="py-24 px-4 border-t border-border">
     <div className="max-w-4xl mx-auto">
-      <div className="text-center mb-16">
+      <motion.div
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+      >
         <p className="text-xs font-mono text-primary tracking-widest uppercase mb-3">Tech Stack</p>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground">Built with modern tools</h2>
-      </div>
+      </motion.div>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        {stacks.map((s) => (
-          <div key={s.category} className="p-5 rounded-lg bg-card border border-border">
+        {stacks.map((s, i) => (
+          <motion.div
+            key={s.category}
+            className="p-5 rounded-lg bg-card border border-border"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: i * 0.15, ease: "easeOut" }}
+          >
             <h3 className="font-mono text-sm text-primary mb-4">{s.category}</h3>
             <ul className="space-y-2">
               {s.items.map((item) => (
@@ -23,7 +38,7 @@ const TechStackSection = () => (
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

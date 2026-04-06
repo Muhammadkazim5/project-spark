@@ -1,6 +1,14 @@
+import { motion } from "framer-motion";
+
 const CTASection = () => (
   <section className="py-24 px-4">
-    <div className="max-w-2xl mx-auto text-center">
+    <motion.div
+      className="max-w-2xl mx-auto text-center"
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
         Stop configuring. <span className="gradient-text">Start building.</span>
       </h2>
@@ -11,7 +19,7 @@ const CTASection = () => (
         <span className="text-muted-foreground">$</span>
         <span>npx create-myapp</span>
       </div>
-    </div>
+    </motion.div>
   </section>
 );
 

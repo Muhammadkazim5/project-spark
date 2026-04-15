@@ -7,7 +7,7 @@ const stacks = [
 ];
 
 const TechStackSection = () => (
-  <section className="py-24 px-4 border-t border-border">
+  <section className="py-24 px-4 pt-28 border-t border-border">
     <div className="max-w-4xl mx-auto">
       <motion.div
         className="text-center mb-16"

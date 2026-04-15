@@ -12,7 +12,7 @@ const features = [
 ];
 
 const FeaturesSection = () => (
-  <section id="features" className="relative py-24 px-4">
+  <section className="relative py-24 px-4 pt-28">
     <div className="max-w-5xl mx-auto">
       <motion.div
         className="text-center mb-16"

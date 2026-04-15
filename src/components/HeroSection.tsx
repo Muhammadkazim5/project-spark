@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import TerminalDemo from "./TerminalDemo";
 
 const HeroSection = () => (
@@ -37,9 +38,9 @@ const HeroSection = () => (
             📋
           </button>
         </div>
-        <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-          See features ↓
-        </a>
+        <Link to="/features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+          See features →
+        </Link>
       </div>
     </motion.div>
 
